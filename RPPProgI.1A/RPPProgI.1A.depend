@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1607985454 source:c:\users\crist\onedrive\escritorio\rppprogi.1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
