@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <string.h>
+#define TAM 5
+
+typedef struct{
+
+int dia;
+int mes;
+int anio;
+}eFecha;
+
+typedef struct{
+int id;
+char descripcion[20];
+float precio;
+eFecha fechaVencimiento;
+int isEmpty;
+}eComida;
+
+void duplicarImpares(int vec[], int tam);
+void subirVocales(char cad[]);
+
+int main()
+{
+
+    eComida food[TAM]={
+        {1,"pizza",500,{1,1,2020},0},
+        {2,"tarta",450,{2,2,2020},0},
+        {3,"hamburguesa",400,{3,3,2020},0},
+        {4,"pancho",350,{4,4,2020}},
+        {5,"empanada",300,{5,5,2020},0}
+        };
+    eComida auxFood;
+    for(int i=0;i<TAM-1;i++)
+    {
+        for(int j=i+1;j<TAM;j++)
+        if(food[i].fechaVencimiento.anio<food[j].fechaVencimiento.anio){
+            auxFood = food[i];
+            food[i] = food[j];
+            food[j] = auxFood;
+        }
+        else
+            if(food[i].fechaVencimiento.anio==food[j].fechaVencimiento.anio&&food[i].descripcion>food[j].descripcion)
+            {
+                auxFood = food[i];
+                food[i] = food[j];
+                food[j] = auxFood;
+            }
+    }
+    //subirVocales("as");
+    //duplicarImpares({1,2},2);
+    return 0;
+}
+void duplicarImpares(int vec[], int tam){
+    for(int i=0;i<tam;i++)
+    {
+        if(!(vec[i]%2==0))
+        {
+            vec[i] *= 2;
+        }
+    }
+}
+
+void subirVocales(char cad[]){
+    for(int i=0;i<strlen(cad)-1;i++)
+    {
+        if(cad[i]>='a'&&cad[i]<='z')
+        {
+            //cad[i] = toupper(cad[i]);
+            cad[i] - 'a' + 'A';
+        }
+    }
+}
